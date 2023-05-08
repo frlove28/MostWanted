@@ -92,7 +92,8 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
-            //! TODO
+
+      
             // displayPersonInfo(person);
             break;
         case "family":
@@ -119,6 +120,11 @@ function displayPeople(displayTitle, peopleToDisplay) {
     alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
 }
 
+function displayPersonInfo (person) {
+    // const formatedPersonDisplayText = personToDisplay.map(person => `${person.firstName} ${person.lastName}`).join(`\n`)``;
+    console.log (person)
+
+}
 function validatedPrompt(message, acceptableAnswers) {
     acceptableAnswers = acceptableAnswers.map(aa => aa.toLowerCase());
 
