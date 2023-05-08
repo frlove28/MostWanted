@@ -64,10 +64,28 @@ function searchByName(people) {
 }
 
 function searchByTraits(people){
-    const traitToSearchForString = prompt('Please enter the trait of the person you are searching for. Options are height, weight, and eye color: ');
-    const traitToSearchForInt = parseInt(traitToSearchForString);
-    const traitFilterResults = people.filter(person => person.trait === traitToSearchForInt);
-    return traitFilterResults;
+    const traitToSearchFor = prompt('Please enter the trait of the person you are searching for. Options are height, weight, and eye color: ');
+    if (traitToSearchFor === 'height'){ 
+        const traitToSearchForString = prompt('Please enter the height, in inches, of the person you are searching for.: ');
+        const traitToSearchForInt = parseInt(traitToSearchForString);
+        const traitFilterResults = people.filter(person => person.height === traitToSearchForInt);
+        return traitFilterResults;
+    }
+    else if(traitToSearchFor === 'weight'){ 
+        const traitToSearchForString = prompt('Please enter the weight, in pounds, of the person you are searching for.: ');
+        const traitToSearchForInt = parseInt(traitToSearchForString);
+        const traitFilterResults = people.filter(person => person.weight === traitToSearchForInt);
+        return traitFilterResults;
+    }
+    else if(traitToSearchFor === 'eye color'){ 
+        const traitToSearchForString = prompt('Please enter the eye color of the person you are searching for (Valid choices are brown, black, hazel, blue, or green).: ');
+        const traitToSearchFor = parseInt(traitToSearchForString);
+        const traitFilterResults = people.filter(person => person.eyeColor === traitToSearchFor);
+        return traitFilterResults;
+    }
+    else{
+        console.log(` ${traitToSearchFor} is not a valid choice. Try again`)
+    }
 }
 function mainMenu(person, people) {
 
