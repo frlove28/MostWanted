@@ -79,8 +79,7 @@ function searchByTraits(people){
     }
     else if(traitToSearchFor === 'eye color'){ 
         const traitToSearchForString = prompt('Please enter the eye color of the person you are searching for (Valid choices are brown, black, hazel, blue, or green).: ');
-        const traitToSearchFor = parseInt(traitToSearchForString);
-        const traitFilterResults = people.filter(person => person.eyeColor === traitToSearchFor);
+        const traitFilterResults = people.filter(person => person.eyeColor === traitToSearchForString);
         return traitFilterResults;
     }
     else{
