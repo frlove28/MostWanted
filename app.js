@@ -64,7 +64,7 @@ function searchByName(people) {
 }
 
 function searchByTraits(people){
-    const traitToSearchFor = prompt('Please enter the trait of the person you are searching for. Options are height, weight, and eye color: ');
+    const traitToSearchFor = validatedPrompt('Enter a trait:',['height','weight','eye color']);
     if (traitToSearchFor === 'height'){ 
         const traitToSearchForString = prompt('Please enter the height, in inches, of the person you are searching for.: ');
         const traitToSearchForInt = parseInt(traitToSearchForString);
@@ -78,12 +78,9 @@ function searchByTraits(people){
         return traitFilterResults;
     }
     else if(traitToSearchFor === 'eye color'){ 
-        const traitToSearchForString = prompt('Please enter the eye color of the person you are searching for (Valid choices are brown, black, hazel, blue, or green).: ');
+        const traitToSearchForString = validatedPrompt('Please enter the eye color of the person you are searching for:', ['green','black','blue','hazel','brown']);
         const traitFilterResults = people.filter(person => person.eyeColor === traitToSearchForString);
         return traitFilterResults;
-    }
-    else{
-        console.log(` ${traitToSearchFor} is not a valid choice. Try again`)
     }
 }
 function mainMenu(person, people) {
