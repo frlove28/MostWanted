@@ -92,8 +92,7 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
-            //! TODO
-            // displayPersonInfo(person);
+            displayPersonInfo(person);
             break;
         case "family":
             //! TODO
@@ -117,6 +116,13 @@ function mainMenu(person, people) {
 function displayPeople(displayTitle, peopleToDisplay) {
     const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
     alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
+}
+
+function displayPersonInfo(personToDisplay){
+    const formatedPersonDisplayInfo = `Full Name: ${personToDisplay.firstName} ${personToDisplay.lastName} \n Gender: ${personToDisplay.gender} \n DOB: ${personToDisplay.dob}
+    Height: ${personToDisplay.height} \n Weight: ${personToDisplay.weight} \n Eye Color: ${personToDisplay.eyeColor} \n Occupation: ${personToDisplay.occupation}`;
+//    const traitToSearchFor = validatedPrompt('Enter a trait:',['height','weight','eye color'])
+    alert(`${formatedPersonDisplayInfo}`);
 }
 
 function validatedPrompt(message, acceptableAnswers) {
