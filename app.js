@@ -143,13 +143,26 @@ function findParents(person, people){
     return parentArray;
 }
 function findSpouse(person,people){
-    spouse = people.filter(person => person.spouse === person.id){
+    let currentSpouseArray = [];
+    currentSpouseArray = people.filter(function(el){
+    if (person.currentSpouse[0] == el.id){
+        currentSpouseArray.push(el);
         return true;
     }
-
+    else{
+        return false;
+    }})
+    if(currentSpouseArray.length == 1){
+        alert(`${currentSpouseArray.firstName} ${currentSpouseArray.lastName} is the spouse of ${person.firstName} ${person.lastName}.`);
+    }
+    else{
+        alert(`${person.firstName} ${person.lastName} ain't got no spousey!!`)
+    }
+    return currentSpouseArray
 }
 function findPersonFamily(person, people){
         personFamily = findParents(person,people);
+        personSpouse = findSpouse(person,people);
         return personFamily;
         // const ParentArray = [];
         
