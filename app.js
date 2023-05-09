@@ -96,7 +96,7 @@ function mainMenu(person, people) {
             break;
         case "family":
             let personFamily = findPersonFamily(person, people);
-            displayPeople('Family', personFamily);
+   //         displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
@@ -143,26 +143,36 @@ function findParents(person, people){
     return parentArray;
 }
 function findSpouse(person,people){
-    let currentSpouseArray = [];
-    currentSpouseArray = people.filter(function(el){
-    if (person.currentSpouse[0] == el.id){
-        currentSpouseArray.push(el);
+    foundSpouse = people.filter(function(el){
+    if (person.currentSpouse === el.id){
+        alert(`${el.firstName} ${el.lastName} is the spouse of ${person.firstName} ${person.lastName}.`);
         return true;
     }
     else{
         return false;
     }})
-    if(currentSpouseArray.length == 1){
-        alert(`${currentSpouseArray.firstName} ${currentSpouseArray.lastName} is the spouse of ${person.firstName} ${person.lastName}.`);
-    }
-    else{
-        alert(`${person.firstName} ${person.lastName} ain't got no spousey!!`)
-    }
-    return currentSpouseArray
 }
+function findSiblings(person,people){
+    let foundSiblings = [];
+    foundSiblings = people.filter(function(el){
+        //If there are no parents or we are on the same person - skip
+        if (person.parents.length === 0 || person.id === el.id || el.parents[0] === ''){
+            return false;
+        }
+        else if (person.parents[0] === el.parents[0] || person.parents[1] === el.parents[1]){
+            foundSiblings.push(el);
+            return true;
+        }
+        })
+        alert(foundSiblings);
+    return foundSiblings;
+
+}
+
 function findPersonFamily(person, people){
         personFamily = findParents(person,people);
         personSpouse = findSpouse(person,people);
+        personSiblings = findSiblings(person,people);
         return personFamily;
         // const ParentArray = [];
         
