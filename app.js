@@ -92,12 +92,15 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
+<<<<<<< HEAD
              displayPersonInfo(person);
+=======
+            displayPersonInfo(person);
+>>>>>>> 0678b7a7de23bad53968c9b32f2b7681794ac4bf
             break;
         case "family":
-            //! TODO
-            // let personFamily = findPersonFamily(person, people);
-            // displayPeople('Family', personFamily);
+            let personFamily = findPersonFamily(person, people);
+            displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
@@ -118,13 +121,72 @@ function displayPeople(displayTitle, peopleToDisplay) {
     alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
 }
 
+<<<<<<< HEAD
 function displayPersonInfo (person) {
      const formatedPersonDisplayInfo = personToDisplay.map(person => `${person.firstName} ${person.lastName}`).join(`\n`)`
      gender:${person.gender}\n`
 
     
 
+=======
+function displayPersonInfo(personToDisplay){
+    const formatedPersonDisplayInfo = `Full Name: ${personToDisplay.firstName} ${personToDisplay.lastName} \nGender: ${personToDisplay.gender} \nDOB: ${personToDisplay.dob}\n
+    Height: ${personToDisplay.height} \nWeight: ${personToDisplay.weight} \nEye Color: ${personToDisplay.eyeColor} \nOccupation: ${personToDisplay.occupation}`;
+    alert(`${formatedPersonDisplayInfo}`);
+>>>>>>> 0678b7a7de23bad53968c9b32f2b7681794ac4bf
 }
+function findParents(person, people){
+    parentArray = [];
+    parentArray = people.filter(function(el){
+    if (person.parents[0] === el.id || person.parents[1] === el.id){
+        parentArray.push(el);
+        return true;
+    }
+    else {
+        return false;
+    }})
+    if(parentArray.length > 1){
+        alert(`${parentArray[0].firstName} ${parentArray[0].lastName} and ${parentArray[1].firstName} ${parentArray[1].lastName} are the parents of ${person.firstName} ${person.lastName}.`);     
+    }
+    else if(parentArray.length == 1){
+        alert(`${parentArray[0].firstName} ${parentArray[0].lastName} is the parent of ${person.firstName} ${person.lastName}.`);
+    }
+    else{
+        alert(`${person.firstName} ${person.lastName} doesn't seem to have any parents`)}
+    return parentArray;
+}
+function findSpouse(person,people){
+    let currentSpouseArray = [];
+    currentSpouseArray = people.filter(function(el){
+    if (person.currentSpouse[0] == el.id){
+        currentSpouseArray.push(el);
+        return true;
+    }
+    else{
+        return false;
+    }})
+    if(currentSpouseArray.length == 1){
+        alert(`${currentSpouseArray.firstName} ${currentSpouseArray.lastName} is the spouse of ${person.firstName} ${person.lastName}.`);
+    }
+    else{
+        alert(`${person.firstName} ${person.lastName} ain't got no spousey!!`)
+    }
+    return currentSpouseArray
+}
+function findPersonFamily(person, people){
+        personFamily = findParents(person,people);
+        personSpouse = findSpouse(person,people);
+        return personFamily;
+        // const ParentArray = [];
+        
+        // const personFamily = people.filter(function (person){
+
+        // } => person.parents)
+        // alert(`${personFamily}`)
+        
+        // return personFamily;
+} 
+
 function validatedPrompt(message, acceptableAnswers) {
     acceptableAnswers = acceptableAnswers.map(aa => aa.toLowerCase());
 
@@ -141,6 +203,7 @@ function validatedPrompt(message, acceptableAnswers) {
     }
 }
 
+
 function exitOrRestart(people) {
     const userExitOrRestartChoice = validatedPrompt(
         'Would you like to exit or restart?',
@@ -156,5 +219,4 @@ function exitOrRestart(people) {
             alert('Invalid input. Please try again.');
             return exitOrRestart(people);
     }
-
 }
