@@ -118,25 +118,39 @@ function displayPeople(displayTitle, peopleToDisplay) {
 }
 
 function displayPersonInfo(personToDisplay){
-    const formatedPersonDisplayInfo = `Full Name: ${personToDisplay.firstName} ${personToDisplay.lastName} \n Gender: ${personToDisplay.gender} \n DOB: ${personToDisplay.dob}
-    Height: ${personToDisplay.height} \n Weight: ${personToDisplay.weight} \n Eye Color: ${personToDisplay.eyeColor} \n Occupation: ${personToDisplay.occupation}`;
+    const formatedPersonDisplayInfo = `Full Name: ${personToDisplay.firstName} ${personToDisplay.lastName} \nGender: ${personToDisplay.gender} \nDOB: ${personToDisplay.dob}\n
+    Height: ${personToDisplay.height} \nWeight: ${personToDisplay.weight} \nEye Color: ${personToDisplay.eyeColor} \nOccupation: ${personToDisplay.occupation}`;
     alert(`${formatedPersonDisplayInfo}`);
 }
 function findParents(person, people){
-    let parentArray=[];
+    parentArray = [];
     parentArray = people.filter(function(el){
     if (person.parents[0] === el.id || person.parents[1] === el.id){
-        parentArray.push(el.id);
-        alert(`${parentArray}`)
+        parentArray.push(el);
         return true;
     }
     else {
         return false;
+    }})
+    if(parentArray.length > 1){
+        alert(`${parentArray[0].firstName} ${parentArray[0].lastName} and ${parentArray[1].firstName} ${parentArray[1].lastName} are the parents of ${person.firstName} ${person.lastName}.`);     
     }
-    })}
-function findPersonFamily(person, people){
+    else if(parentArray.length == 1){
+        alert(`${parentArray[0].firstName} ${parentArray[0].lastName} is the parent of ${person.firstName} ${person.lastName}.`);
+    }
+    else{
+        alert(`${person.firstName} ${person.lastName} doesn't seem to have any parents`)}
+    return parentArray;
+}
+function findSpouse(person,people){
+    spouse = people.filter(person => person.spouse === person.id){
+        return true;
+    }
 
-        findParents(person,people);
+}
+function findPersonFamily(person, people){
+        personFamily = findParents(person,people);
+        return personFamily;
         // const ParentArray = [];
         
         // const personFamily = people.filter(function (person){
@@ -179,5 +193,4 @@ function exitOrRestart(people) {
             alert('Invalid input. Please try again.');
             return exitOrRestart(people);
     }
-
 }
