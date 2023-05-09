@@ -95,9 +95,8 @@ function mainMenu(person, people) {
             displayPersonInfo(person);
             break;
         case "family":
-            //! TODO
-            // let personFamily = findPersonFamily(person, people);
-            // displayPeople('Family', personFamily);
+            let personFamily = findPersonFamily(person, people);
+            displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
@@ -121,9 +120,32 @@ function displayPeople(displayTitle, peopleToDisplay) {
 function displayPersonInfo(personToDisplay){
     const formatedPersonDisplayInfo = `Full Name: ${personToDisplay.firstName} ${personToDisplay.lastName} \n Gender: ${personToDisplay.gender} \n DOB: ${personToDisplay.dob}
     Height: ${personToDisplay.height} \n Weight: ${personToDisplay.weight} \n Eye Color: ${personToDisplay.eyeColor} \n Occupation: ${personToDisplay.occupation}`;
-//    const traitToSearchFor = validatedPrompt('Enter a trait:',['height','weight','eye color'])
     alert(`${formatedPersonDisplayInfo}`);
 }
+function findParents(person, people){
+    let parentArray=[];
+    parentArray = people.filter(function(el){
+    if (person.parents[0] === el.id || person.parents[1] === el.id){
+        parentArray.push(el.id);
+        alert(`${parentArray}`)
+        return true;
+    }
+    else {
+        return false;
+    }
+    })}
+function findPersonFamily(person, people){
+
+        findParents(person,people);
+        // const ParentArray = [];
+        
+        // const personFamily = people.filter(function (person){
+
+        // } => person.parents)
+        // alert(`${personFamily}`)
+        
+        // return personFamily;
+} 
 
 function validatedPrompt(message, acceptableAnswers) {
     acceptableAnswers = acceptableAnswers.map(aa => aa.toLowerCase());
@@ -140,6 +162,7 @@ function validatedPrompt(message, acceptableAnswers) {
         return validatedPrompt(message, acceptableAnswers);
     }
 }
+
 
 function exitOrRestart(people) {
     const userExitOrRestartChoice = validatedPrompt(
