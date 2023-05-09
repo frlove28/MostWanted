@@ -92,11 +92,7 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
-<<<<<<< HEAD
-             displayPersonInfo(person);
-=======
             displayPersonInfo(person);
->>>>>>> 0678b7a7de23bad53968c9b32f2b7681794ac4bf
             break;
         case "family":
             let personFamily = findPersonFamily(person, people);
@@ -121,19 +117,10 @@ function displayPeople(displayTitle, peopleToDisplay) {
     alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
 }
 
-<<<<<<< HEAD
-function displayPersonInfo (person) {
-     const formatedPersonDisplayInfo = personToDisplay.map(person => `${person.firstName} ${person.lastName}`).join(`\n`)`
-     gender:${person.gender}\n`
-
-    
-
-=======
 function displayPersonInfo(personToDisplay){
     const formatedPersonDisplayInfo = `Full Name: ${personToDisplay.firstName} ${personToDisplay.lastName} \nGender: ${personToDisplay.gender} \nDOB: ${personToDisplay.dob}\n
     Height: ${personToDisplay.height} \nWeight: ${personToDisplay.weight} \nEye Color: ${personToDisplay.eyeColor} \nOccupation: ${personToDisplay.occupation}`;
     alert(`${formatedPersonDisplayInfo}`);
->>>>>>> 0678b7a7de23bad53968c9b32f2b7681794ac4bf
 }
 function findParents(person, people){
     parentArray = [];
