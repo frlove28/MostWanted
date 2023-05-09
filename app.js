@@ -92,9 +92,7 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
-
-      
-            // displayPersonInfo(person);
+             displayPersonInfo(person);
             break;
         case "family":
             //! TODO
@@ -121,8 +119,10 @@ function displayPeople(displayTitle, peopleToDisplay) {
 }
 
 function displayPersonInfo (person) {
-    // const formatedPersonDisplayText = personToDisplay.map(person => `${person.firstName} ${person.lastName}`).join(`\n`)``;
-    console.log (person)
+     const formatedPersonDisplayInfo = personToDisplay.map(person => `${person.firstName} ${person.lastName}`).join(`\n`)`
+     gender:${person.gender}\n`
+
+    
 
 }
 function validatedPrompt(message, acceptableAnswers) {
