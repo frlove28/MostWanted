@@ -152,25 +152,27 @@ function findSpouse(person,people){
         return false;
     }})
 }
-function findSiblings(poi,people){
-    let foundSiblings = people.filter(function(person){
+function findSiblings(person,people){
+    let foundSiblings = [];
+    foundSiblings = people.filter(function(el){
         //If there are no parents or we are on the same person - skip
-        if (poi.parents.length === 0 || poi.id === person.id || person.parents.length === 0){
+        if (person.parents.length === 0 || person.id === el.id || el.parents[0] === ''){
             return false;
         }
-        else if (poi.parents[0] === person.parents[0] || poi.parents[1] === person.parents[1]){
+        else if (person.parents[0] === el.parents[0] || person.parents[1] === el.parents[1]){
+            foundSiblings.push(el);
             return true;
         }
         })
-        displayPeople("Siblings",foundSiblings);
+        alert(foundSiblings);
+    return foundSiblings;
 
 }
 
 function findPersonFamily(person, people){
-        personFamily = findParents(person,people);
-        personSpouse = findSpouse(person,people);
-        personSiblings = findSiblings(person,people);
-
+    const personFamily = findParents(person,people);
+    const personSpouse = findSpouse(person,people);
+    const personSiblings = findSiblings(person,people);
         return personFamily;
         // const ParentArray = [];
         
