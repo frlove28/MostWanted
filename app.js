@@ -99,9 +99,9 @@ function mainMenu(person, people) {
    //         displayPeople('Family', personFamily);
             break;
         case "descendants":
-            //! TODO
-            // let personDescendants = findPersonDescendants(person, people);
-            // displayPeople('Descendants', personDescendants);
+            let personDescendants = findPersonDescendants(person, people);
+    
+            //  displayPeople('Descendants', personDescendants);
             break;
         case "quit":
             return;
@@ -111,6 +111,25 @@ function mainMenu(person, people) {
 
     return mainMenu(person, people);
 }
+
+function findPersonDescendants(poi,people){
+    let foundchildren=[]
+    const findchildren = people.filter(function(person){
+        // if (poi.id === person.parents[0])
+        if (poi.parents.includes(person.id)){
+            foundchildren.push(person);
+            return true;
+
+        }
+        return foundchildren;
+
+    })
+
+}
+
+
+
+
 
 function displayPeople(displayTitle, peopleToDisplay) {
     const formatedPeopleDisplayText = peopleToDisplay.map(person => `${person.firstName} ${person.lastName}`).join('\n');
@@ -156,15 +175,16 @@ function findSiblings(person,people){
     let foundSiblings = [];
     foundSiblings = people.filter(function(el){
         //If there are no parents or we are on the same person - skip
-        if (person.parents.length === 0 || person.id === el.id || el.parents[0] === ''){
+        if (person.parents.length === 0 || person.id === el.id || el.parents[0]==""){
             return false;
         }
-        else if (person.parents[0] === el.parents[0] || person.parents[1] === el.parents[1]){
+        else if (person.parents[0] === el.parents[0] || person.parents[1]=== el.parents[1]){
             foundSiblings.push(el);
             return true;
         }
         })
-        alert(foundSiblings);
+        displayPeople("Siblings", foundSiblings)
+        // alert(foundSiblings);
     return foundSiblings;
 
 }
